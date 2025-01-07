@@ -1,0 +1,9 @@
+Kubernetes: https://kubernetes.io/fr/docs/setup/learning-environment/minikube/
+Postgres
+Certification HTTPS
+DNS
+
+Go 
+redis
+react
+
