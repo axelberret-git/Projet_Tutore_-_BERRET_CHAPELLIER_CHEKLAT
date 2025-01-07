@@ -29,4 +29,5 @@ premier cas ainsi que pour sa stabilité.
 
 
 ## Sources
-Kubernetes: https://kubernetes.io/fr/docs/setup/learning-environment/minikube/
+
+cluster Kubernetes : https://bobcares.com/blog/kubernetes-cluster-deployment-on-proxmox-8/
