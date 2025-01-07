@@ -10,8 +10,22 @@ services:
       - "8080:8080"
     container_name: backend
     networks:
-      - backend-network
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: frontend-react:1.0.0
+    ports:
+      - "3000:3000"  # Le port 3000 exposé
+    container_name: frontend
+    networks:
+      - app-network
+    depends_on:
+      - backend
 
 networks:
-  backend-network:
+  app-network:
     driver: bridge
+
