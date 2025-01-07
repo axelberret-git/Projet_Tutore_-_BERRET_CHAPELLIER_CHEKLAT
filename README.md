@@ -1,6 +1,13 @@
 # Projet_Tutore_-_BERRET_CHAPELLIER_CHEKLAT
 
-## Technos utilisées
+## Utilisation
+
+...
+
+
+## Configuration
+
+### Technos utilisées
 
 Choix de l'environnement de développement éphémère :
 Gitpod
@@ -23,7 +30,7 @@ C'est plus complexe à mettre en place, en revanche c'est préféré pour d'autr
 - une compatibilité avec Helm, ArgoCD, etc ... (interopérabilité avec Kubernetes)
 
 
-## Performance cluster Kubernetes, Gitpod et infrastructure Docker-Compose
+### Performance cluster Kubernetes, Gitpod et infrastructure Docker-Compose
 
 Cette partie traite uniquement les performances recommandées pour la mise en place de Gitpod, de l'infrastructure Docker-Compose
 ainsi que du cluster Kubernetes : (CPU, RAM, stockage)
