@@ -2,8 +2,8 @@
 
 ## Technos utilisées
 Go
-redis
-react
+Redis
+Vue.js
 MariaDB
 Certification HTTPS
 DNS
