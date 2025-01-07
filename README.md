@@ -31,3 +31,4 @@ premier cas ainsi que pour sa stabilité.
 ## Sources
 
 cluster Kubernetes : https://bobcares.com/blog/kubernetes-cluster-deployment-on-proxmox-8/
+Video cluster Kubernetes : https://www.youtube.com/watch?v=PtQ8FOepn94
