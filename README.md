@@ -4,7 +4,7 @@
 Go
 redis
 react
-Postgres
+MariaDB
 Certification HTTPS
 DNS
 
