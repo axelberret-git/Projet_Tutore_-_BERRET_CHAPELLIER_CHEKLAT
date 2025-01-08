@@ -1,25 +1,28 @@
-# Utilisation d'une image de base Node.js 18
-FROM node:18-slim
+# Étape 1 : Build de l'application React
+FROM node:18-slim AS build
 
-# Mettre à jour les packages et installer Nginx
-RUN apt-get update && apt-get install -y nginx
-
-# Créer le répertoire pour l'application et copier les fichiers
+# Définir le répertoire de travail
 WORKDIR /app
-COPY . /app
 
-# Installer les dépendances (pour un frontend React par exemple)
-RUN npm install
+# Copier les fichiers du frontend
+COPY . .
 
-# Copier le fichier de configuration nginx dans le conteneur
-COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+# Installer les dépendances et construire l'application
+RUN npm install && npm run build
 
-# Exposer les ports nécessaires
-EXPOSE 3000 80
+# Étape 2 : Serveur Nginx pour les fichiers statiques
+FROM nginx:1.22.1
 
-# Définir le script d'entrée comme point d'entrée du conteneur
-COPY ./docker-entrypoint.sh /docker-entrypoint.sh
-RUN chmod +x /docker-entrypoint.sh
+# Copier le build dans le répertoire de Nginx
+COPY --from=build /app/build /usr/share/nginx/html
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+# Copier une configuration Nginx personnalisée si nécessaire
+# Vous pouvez inclure un fichier default.conf si besoin
+# COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+
+# Exposer le port 3000
+EXPOSE 3000
+
+# Commande par défaut pour lancer Nginx
+CMD ["nginx", "-g", "daemon off;"]
 

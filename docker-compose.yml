@@ -18,12 +18,10 @@ services:
       dockerfile: Dockerfile
     image: frontend-react:1.0.0
     ports:
-      - "3000:3000"  # Le port 3000 exposé
+      - "3000:80"  # Port local 3000 lié au port 80 du conteneur Nginx
     container_name: frontend
     networks:
       - app-network
-    depends_on:
-      - backend
 
 networks:
   app-network:
