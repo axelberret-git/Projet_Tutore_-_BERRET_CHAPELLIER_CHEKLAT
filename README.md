@@ -37,14 +37,15 @@ ainsi que du cluster Kubernetes : (CPU, RAM, stockage)
 
 Gitpod et infrastructure Docker-compose : (VM unique)
 - Gitpod :          4 CPU, 10 Go RAM, 70 Go 
-- Redis :           1 CPU, 1 Go RAM, 4 Go
+- Redis :           2 CPU, 1 Go RAM, 4 Go
 - MariaDB :         2 CPU, 4 Go RAM, 30 Go
-- Go & Vue.js :     2 CPU, 2 Go RAM, 2 Go
-- React :           1 CPU, 1 Go RAM, 2 Go
-10 CPU, 18 Go RAM, 110 Go
+- Go :              2 CPU, 2 Go RAM, 2 Go
+- React :           1 CPU, 2 Go RAM, 2 Go
+- Mailhog :         1 CPU, 1 Go RAM, 2 Go
+12 CPU, 20 Go RAM, 110 Go
 
 Cluster Kubernetes : (3 VM)
-2 CPU, 4 Go RAM, 20 Go 
+2 CPU, 4 Go RAM, 20 Go
 
 
 ## Sources
