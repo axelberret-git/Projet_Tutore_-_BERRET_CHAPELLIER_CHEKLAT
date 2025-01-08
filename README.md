@@ -16,7 +16,7 @@ docker-compose :
 - Go
 - React
 - Redis
-- Vue.js
+- Mailhog
 - MariaDB
 
 Il est important de savoir que si l'on souhaite utiliser notre Gitpod en auto-hébergé, il est recommandé d'utiliser un 
