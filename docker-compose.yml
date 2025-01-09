@@ -34,11 +34,19 @@ services:
     container_name: sqlite
     volumes:
       - db-data:/data
-      - ./database/init.sql:/data/init.sql  # Assurez-vous que votre init.sql est bien monté dans le conteneur
+      - ./database/init.sql:/data/init.sql 
     entrypoint: |
       sh -c "
         sqlite3 /data/database.db < /data/init.sql && 
         tail -f /dev/null"  # Exécuter le script et ne pas quitter
+    networks:
+      - app-network
+      
+  redis:
+    image: redis:6.2.6
+    container_name: redis
+    ports:
+      - "6379:6379"
     networks:
       - app-network
 
