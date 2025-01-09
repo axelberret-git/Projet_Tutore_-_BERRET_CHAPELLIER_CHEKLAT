@@ -9,8 +9,12 @@ services:
     ports:
       - "8080:8080"
     container_name: backend
+    volumes:
+      - db-data:/app/db
     networks:
       - app-network
+    depends_on:
+      - database
 
   frontend:
     build:
@@ -18,12 +22,30 @@ services:
       dockerfile: Dockerfile
     image: frontend-react:1.0.0
     ports:
-      - "3000:80"  # Port local 3000 lié au port 80 du conteneur Nginx
+      - "3000:80"
     container_name: frontend
+    networks:
+      - app-network
+    depends_on:
+      - backend
+
+  database:
+    image: nouchka/sqlite3:latest
+    container_name: sqlite
+    volumes:
+      - db-data:/data
+      - ./database/init.sql:/data/init.sql  # Assurez-vous que votre init.sql est bien monté dans le conteneur
+    entrypoint: |
+      sh -c "
+        sqlite3 /data/database.db < /data/init.sql && 
+        tail -f /dev/null"  # Exécuter le script et ne pas quitter
     networks:
       - app-network
 
 networks:
   app-network:
     driver: bridge
+
+volumes:
+  db-data:
 
