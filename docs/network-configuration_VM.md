@@ -16,7 +16,7 @@ network:
     ens18:
       dhcp4: no
       addresses:
-        - 192.168.100.10/24
+        - 192.168.100.x/24
       routes:
         - to: default
           via: 192.168.100.1
@@ -66,4 +66,13 @@ systemctl daemon-reload
 systemctl enable netplan-apply.service
 systemctl start netplan-apply.service
 systemctl status netplan-apply.service
+```
+
+
+5. Utilisation du script au redémarrage
+
+`nano /var/spool/cron/crontabs/root`
+
+```
+@reboot /usr/local/bin/configure-network.sh
 ```
