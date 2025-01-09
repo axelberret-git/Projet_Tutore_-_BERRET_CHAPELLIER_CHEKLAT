@@ -2,6 +2,8 @@
 
 `nano /usr/local/bin/configure-network.sh`
 
+avec le contenu suivant
+
 ```
 #!/bin/bash
 
@@ -71,8 +73,8 @@ systemctl status netplan-apply.service
 
 5. Utilisation du script au redémarrage
 
-`nano /var/spool/cron/crontabs/root`
+`sudo crontab -e`
 
-```
-@reboot /usr/local/bin/configure-network.sh
-```
+avec la ligne suivante
+
+`@reboot /usr/local/bin/configure-network.sh`
