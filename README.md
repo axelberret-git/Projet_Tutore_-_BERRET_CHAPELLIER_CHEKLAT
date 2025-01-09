@@ -17,7 +17,7 @@ docker-compose :
 - React
 - Redis
 - Mailhog
-- MariaDB
+- SQlite
 
 Il est important de savoir que si l'on souhaite utiliser notre Gitpod en auto-hébergé, il est recommandé d'utiliser un 
 cluster Kubernetes. Or comme nous décrivons une infrastructure de développement au travers d'un docker-compose, alors 
