@@ -44,7 +44,7 @@ Gitpod et infrastructure Docker-compose : (VM unique)
 - Mailhog :         1 CPU, 1 Go RAM, 2 Go
 12 CPU, 20 Go RAM, 110 Go
 
-Cluster Kubernetes : (3 VM)
+Cluster Kubernetes : (3 VM : 1 master et 2 workers)
 2 CPU, 4 Go RAM, 20 Go
 
 

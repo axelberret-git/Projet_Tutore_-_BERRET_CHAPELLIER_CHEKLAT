@@ -1,7 +1,9 @@
 # Création du cluster Kubernetes
 
-## Prérequis 
+## Prérequis
+
 Tout d'abord créer les VM master et worker 1 (worker 2 est optionel) dans proxmox et vérifier qu'ils ont une connection internet
+
 
 ## Master Kubernetes 
 
