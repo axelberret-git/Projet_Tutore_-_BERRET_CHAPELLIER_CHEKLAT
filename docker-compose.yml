@@ -12,10 +12,10 @@ services:
     volumes:
       - db-data:/app/db
     networks:
+      - backend-network
       - app-network
     depends_on:
-      - database
-      - redis
+      - database 
 
   frontend:
     build:
@@ -26,25 +26,25 @@ services:
       - "3000:80"
     container_name: frontend
     networks:
-      - app-network
+      - app-network 
     depends_on:
       - backend
 
   database:
     build:
-      context: ./src/database  
+      context: ./src/database
       dockerfile: Dockerfile
-    image: image_sqlite  
+    image: image_sqlite
     container_name: sqlite
     volumes:
       - db-data:/data
-      - ./src/database/init.sql:/data/init.sql
-    networks:
-      - app-network
+      - ./src/database/init.sql:/data/init.sql 
     entrypoint: |
       sh -c "
         sqlite3 /data/database.db < /data/init.sql && 
-        tail -f /dev/null"  # Pour garder le conteneur en vie
+        tail -f /dev/null" 
+    networks:
+      - backend-network
 
   redis:
     build:
@@ -55,10 +55,13 @@ services:
     ports:
       - "6379:6379"
     networks:
-      - app-network
+      - backend-network 
+    
 
 networks:
-  app-network:
+  app-network:  
+    driver: bridge
+  backend-network:  
     driver: bridge
 
 volumes:
