@@ -15,7 +15,9 @@ services:
       - backend-network
       - app-network
     depends_on:
-      - database 
+      - database
+      - redis
+      - mailhog
 
   frontend:
     build:
@@ -38,11 +40,11 @@ services:
     container_name: sqlite
     volumes:
       - db-data:/data
-      - ./src/database/init.sql:/data/init.sql 
+      - ./src/database/init.sql:/data/init.sql
     entrypoint: |
       sh -c "
         sqlite3 /data/database.db < /data/init.sql && 
-        tail -f /dev/null" 
+        tail -f /dev/null"
     networks:
       - backend-network
 
@@ -55,15 +57,29 @@ services:
     ports:
       - "6379:6379"
     networks:
-      - backend-network 
-    
+      - backend-network
+
+  mailhog:
+    build:
+      context: ./src/mail
+      dockerfile: Dockerfile
+    image: mailhog/mailhog:v1.0.1
+    container_name: mailhog
+    ports:
+      - "8025:8025"  
+      - "1025:1025" 
+    networks:
+      - app-network
+    environment:
+      - MH_STORE_STORAGE=mailhog-data  
 
 networks:
-  app-network:  
+  app-network:
     driver: bridge
-  backend-network:  
+  backend-network:
     driver: bridge
 
 volumes:
   db-data:
+  mailhog-data:
 
