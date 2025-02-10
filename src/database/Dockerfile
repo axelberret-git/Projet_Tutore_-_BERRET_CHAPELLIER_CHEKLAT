@@ -1,18 +1,16 @@
-# Utiliser une image de base légère, Alpine
-FROM alpine:latest
+# Étape 1 : Construction sur Alpine
+FROM alpine:latest AS builder
 
-# Installer SQLite
 RUN apk add --no-cache sqlite sqlite-dev
 
-# Créer le répertoire où la base de données sera stockée
-RUN mkdir -p /data
+# Étape 2 : Image minimale pour exécuter SQLite
+FROM alpine:latest
 
-# Copiez le fichier init.sql dans le conteneur pour initialiser la base de données
-COPY init.sql /docker-entrypoint-initdb.d/
-
-# Définir le répertoire de travail pour l'application
 WORKDIR /data
 
-# Commande par défaut pour démarrer le conteneur
+# Copier uniquement SQLite depuis l’étape précédente
+COPY --from=builder /usr/bin/sqlite3 /usr/bin/sqlite3
+COPY init.sql /data/init.sql
+
 CMD ["sqlite3", "/data/database.db"]
 
