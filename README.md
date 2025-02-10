@@ -60,3 +60,4 @@ Cluster Kubernetes : (3 VM : 1 master et 2 workers)
 
 cluster Kubernetes : https://bobcares.com/blog/kubernetes-cluster-deployment-on-proxmox-8/
 Video cluster Kubernetes : https://www.youtube.com/watch?v=PtQ8FOepn94
+Projet référence de vérification d'installation Docker : https://github.com/docker/awesome-compose 
