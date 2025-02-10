@@ -1,5 +1,13 @@
 # Projet_Tutore_-_BERRET_CHAPELLIER_CHEKLAT
 
+## Équipements à disposition
+
+3 machines Proxmox :
+- 100.64.85.12 (machine primaire)
+- 100.64.85.4
+- 100.64.85.14
+
+
 ## Utilisation
 
 ...
